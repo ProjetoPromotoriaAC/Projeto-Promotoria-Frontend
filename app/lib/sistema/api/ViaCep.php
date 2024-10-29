@@ -25,7 +25,7 @@ class ViaCep {
             $this->std->cep = $this->cep;
             $this->std->ds_logradouro = $html->logradouro;
             $this->std->cd_municipio = $html->ibge;
-            $this->std->nm_bairro = $html->bairro;
+            $this->std->ds_bairro = $html->bairro;
             $this->std->sg_uf = $html->uf;
 
             return $this->std;
