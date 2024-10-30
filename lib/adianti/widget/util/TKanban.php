@@ -60,6 +60,14 @@ class TKanban extends TElement
     }
     
     /**
+     * owner method
+     */
+
+    public function getItems() {
+        return $this->items;
+    }
+
+    /**
      *
      */
     public function setStageHeight($height)
