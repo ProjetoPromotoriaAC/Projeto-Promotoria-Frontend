@@ -4,7 +4,7 @@
  * @package model
  * @version 1.0
  */
-public class CadMunicipio extends TRecord { 
+class CadMunicipio extends TRecord { 
     const TABLENAME  = 'cad_municipio';
     const PRIMARYKEY = 'cd_municipio';
     const IDPOLICY = 'max';
