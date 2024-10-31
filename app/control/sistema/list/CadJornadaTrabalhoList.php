@@ -6,7 +6,7 @@
  * @author Felipe Lima
  */
 
-class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
+class CadJornadaTrabalhoList extends ListStandard implements ListInterface {
     protected $form;     // registration form
     protected $datagrid; // listing
     protected $pageNavigation;
@@ -15,6 +15,8 @@ class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
     protected $transformCallback;
     
     protected $container;
+
+    private $nm_jornada_trabalho;
     /**
      * Page constructor
      */
@@ -23,7 +25,8 @@ class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
         
         $formName = 'form_'.__CLASS__;
         
-        // $this->setForm($formName,'JORNADA DE TRABALHO');
+        $this->setForm($formName,'JORNADA DE TRABALHO');
+        $this->setFields();
         // $btn_buscar  = $this->form->addAction('Buscar' , new TAction([$this,'onSearch']), 'fas: fa-search');
         // $btn_limpar  = $this->form->addAction('Limpar' , new TAction([$this,'onSearch']), 'fas: fa-eraser');
         // $btn_novo    = $this->form->addActionLink('Novo'   , new TAction(['CadHoldingForm','onEdit']), 'fas: fa-plus');
@@ -42,12 +45,8 @@ class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
         $this->setDatabase('base');            
         $this->setActiveRecord('CadJornadaTrabalho'); 
 
-        # add filters 
-        // $this->addFilterField('nr_cnpj','=','nr_cnpj');
-        // $this->addFilterField('rz_holding','like','rz_holding');
-        // $this->addFilterField('fg_ativo','=','fg_ativo');
-        // $this->addFilterField('dt_cadastro','=','dt_cadastro');
-
+        parent::setAfterSearchCallback( [$this, 'onAfterSearch' ] );
+        parent::addFilterField('nm_jornada_trabalho','like','nm_jornada_trabalho');
     }
 
     public function setForm(string $name, string $title): void {
@@ -55,6 +54,14 @@ class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
         $this->form->setFormTitle($title);    
         $this->form->setFieldSizes('100%');
         $this->form->generateAria();
+
+        $btn_buscar = $this->form->addAction('Buscar', new TAction([$this,'onSearch']),'fas: fa-search');
+        $btn_limpar = $this->form->addAction('Limpar', new TAction([$this,'onClear']),'fas: fa-eraser');
+    }
+
+    public function setFields() {
+        $this->nm_jornada_trabalho = new TEntry('nm_jornada_trabalho');
+        $this->form->addFields([$this->nm_jornada_trabalho]);
     }
 
     public function setDataGrid(string $name, bool $datatable,bool $viewId) {
@@ -122,20 +129,6 @@ class CadJornadaTrabalhoList extends TStandardList implements ListInterface {
         $panel = new TPanelGroup;
         $panel->add($this->datagrid)->style = 'overflow-x:auto';
         $panel->addFooter($this->pageNavigation);
-        $panel->addHeaderActionLink('', new TAction(['CadJornadaTrabalhoForm', 'onEdit'], ['register_state' => 'false']), 'fa:plus');
-        
-        $btnf = TButton::create('find', [$this, 'onSearch'], '', 'fa:search');
-        $btnf->style= 'height: 37px; margin-right:4px;';
-        
-        // $nm_jornada_trabalho = new TEntry('nm_jornada_trabalho');
-
-        // $this->form->add->fie
-        $form_search = new TForm('form_search_name');
-        $form_search->style = 'float:left;display:flex';
-        // $form_search->add($name, true);
-        $form_search->add($btnf, true);
-        
-        $panel->addHeaderWidget($form_search);
 
         $this->container->add($panel);
     }

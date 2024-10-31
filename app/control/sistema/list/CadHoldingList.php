@@ -6,7 +6,7 @@
  * @author Felipe Lima
  */
 
-class CadHoldingList extends TStandardList implements ListInterface {
+class CadHoldingList extends ListStandard implements ListInterface {
     protected $form;     // registration form
     protected $datagrid; // listing
     protected $pageNavigation;
@@ -51,9 +51,6 @@ class CadHoldingList extends TStandardList implements ListInterface {
             'col-sm-2'
         ];
 
-        $btn_buscar  = $this->form->addAction('Buscar' , new TAction([$this,'onSearch']), 'fas: fa-search');
-        $btn_limpar  = $this->form->addAction('Limpar' , new TAction([$this,'onSearch']), 'fas: fa-eraser');
-        $btn_novo    = $this->form->addActionLink('Novo'   , new TAction(['CadHoldingForm','onEdit']), 'fas: fa-plus');
         # class button 
         // $btn_incluir->class = 'btn btn-default';
         
@@ -83,6 +80,10 @@ class CadHoldingList extends TStandardList implements ListInterface {
         $this->form->setFormTitle($title);    
         $this->form->setFieldSizes('100%');
         $this->form->generateAria();
+
+        $btn_buscar  = $this->form->addAction('Buscar' , new TAction([$this,'onSearch']), 'fas: fa-search');
+        $btn_limpar  = $this->form->addAction('Limpar' , new TAction([$this,'onClear']), 'fas: fa-eraser');
+        $btn_novo    = $this->form->addActionLink('Novo'   , new TAction(['CadHoldingForm','onEdit']), 'fas: fa-plus');
     }
 
     public function setDataGrid(string $name, bool $datatable,bool $viewId) {
