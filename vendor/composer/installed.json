@@ -91,6 +91,46 @@
             "install-path": "../adianti/plugins"
         },
         {
+            "name": "andregasparin/leafletadianti",
+            "version": "1.0.5",
+            "version_normalized": "1.0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andre-gasparin/leafletadianti.git",
+                "reference": "25427b1fa951b7f9d8cef3ad0c5be0f356691f13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andre-gasparin/leafletadianti/zipball/25427b1fa951b7f9d8cef3ad0c5be0f356691f13",
+                "reference": "25427b1fa951b7f9d8cef3ad0c5be0f356691f13",
+                "shasum": ""
+            },
+            "time": "2021-06-15T01:36:31+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "AndreGasparin\\Leafletadianti\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "André Gasparin",
+                    "email": "andre.gasparin@hotmail.com"
+                }
+            ],
+            "description": "Plugins for Adianti Framework",
+            "support": {
+                "issues": "https://github.com/andre-gasparin/leafletadianti/issues",
+                "source": "https://github.com/andre-gasparin/leafletadianti/tree/1.0.5"
+            },
+            "install-path": "../andregasparin/leafletadianti"
+        },
+        {
             "name": "bacon/bacon-qr-code",
             "version": "2.0.8",
             "version_normalized": "2.0.8.0",

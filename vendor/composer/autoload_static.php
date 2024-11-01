@@ -141,6 +141,7 @@ class ComposerStaticInit4074d5b77a855dbfd71e43da22fa21e2
         'A' => 
         array (
             'Assert\\' => 7,
+            'AndreGasparin\\Leafletadianti\\' => 29,
             'Adianti\\Plugins\\' => 16,
         ),
     );
@@ -207,6 +208,10 @@ class ComposerStaticInit4074d5b77a855dbfd71e43da22fa21e2
         'Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/beberlei/assert/lib/Assert',
+        ),
+        'AndreGasparin\\Leafletadianti\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/andregasparin/leafletadianti/src',
         ),
         'Adianti\\Plugins\\' => 
         array (
