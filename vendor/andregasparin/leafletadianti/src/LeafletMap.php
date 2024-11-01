@@ -22,6 +22,7 @@ class LeafletMap extends TElement
 
     private $locations_to_center = array();
     
+    # contribute because doenset declare this var
     private $id;    
 
     public function __construct($lat, $lng, $z, $tile = 'google')
